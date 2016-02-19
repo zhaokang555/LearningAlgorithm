@@ -15,7 +15,7 @@ function quicksort(arr, left, right) {
             throw Error('number of arguments must be 1 or 3');
     }
 
-    let i = left,
+    var i = left,
         j = right;
     while (i < j) {
         // 以arr[left]为基准
@@ -27,14 +27,14 @@ function quicksort(arr, left, right) {
 
         // 交换两个数在数组中的位置
         if (i < j) { // 当哨兵i和哨兵j没有相遇时
-            let temp = arr[i];
+            var temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
     }
 
     // 最终将基准数归位
-    let temp = a[left];
+    temp = a[left];
     a[left] = a[i];
     a[i] = temp;
 
