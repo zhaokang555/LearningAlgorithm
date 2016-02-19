@@ -9,6 +9,7 @@ void quicksort(int left, int right, int a[])
 	int i = left;
 	int j = right;
 	while (i < j) {
+		// 以a[left]为基准
 		// 顺序很重要，要先从右往左找
 		while (a[j] >= a[left] && i < j) j--;
 		// 再从左往右找
