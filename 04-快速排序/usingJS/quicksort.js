@@ -1,6 +1,6 @@
 function quicksort(arr, left, right) {
     // 跳出递归的条件
-    if (left < right)
+    if (left >= right)
         return;
 
     // 判断参数个数
@@ -16,7 +16,8 @@ function quicksort(arr, left, right) {
     }
 
     var i = left,
-        j = right;
+        j = right,
+        temp = arr[i];
     while (i < j) {
         // 以arr[left]为基准
         // 顺序很重要, 要先从右往左找
@@ -27,7 +28,6 @@ function quicksort(arr, left, right) {
 
         // 交换两个数在数组中的位置
         if (i < j) { // 当哨兵i和哨兵j没有相遇时
-            var temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
