@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void quicksort(int left, int right, int a[])
+void quickSort(int a[], int left, int right)
 {
 	// 跳出递归的条件
 	if (left > right) return;
@@ -9,6 +9,7 @@ void quicksort(int left, int right, int a[])
 	int i = left;
 	int j = right;
 	while (i < j) {
+		// 以a[left]为基准
 		// 顺序很重要，要先从右往左找
 		while (a[j] >= a[left] && i < j) j--;
 		// 再从左往右找
@@ -27,8 +28,8 @@ void quicksort(int left, int right, int a[])
 	a[left] = a[i];
 	a[i] = temp;
 
-	quicksort(left, i - 1, a); // 继续处理左边的，这里是一个递归的过程
-	quicksort(i + 1, right, a); // 继续处理右边的，这里是一个递归的过程
+	quickSort(a, left, i - 1); // 继续处理左边的，这里是一个递归的过程
+	quickSort(a, i + 1, right); // 继续处理右边的，这里是一个递归的过程
 }
 
 int main(void)
@@ -44,7 +45,7 @@ int main(void)
 	for (int i = 0; i < n; i++)
 		scanf("%d", &a[i]);
 
-	quicksort(0, n - 1, a); // 快速排序调用
+	quickSort(a, 0, n - 1); // 快速排序调用
 
 	// 输出排序后的结果
 	printf("The numbers in ascending order are:\n");
