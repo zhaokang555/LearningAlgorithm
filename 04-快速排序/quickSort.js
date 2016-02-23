@@ -1,3 +1,9 @@
+function swap(arr, p1, p2) {
+    var temp = arr[p1];
+    arr[p1] = arr[p2];
+    arr[p2] = temp;
+}
+
 function quickSort(arr, left, right) {
     // 判断参数个数
     switch (arguments.length) {
@@ -17,26 +23,23 @@ function quickSort(arr, left, right) {
 
     var i = left,
         j = right,
-        temp = arr[i];
+        base = left; // 以arr[left]为基准，将arr分成两部分
+        
     while (i < j) {
-        // 以arr[left]为基准
-        // 顺序很重要, 要先从右往左找
-        while (arr[j] >= arr[left] && i < j)
+        // 顺序很重要, 要先从右往左找。这样才能保证当i、j相遇时arr[i]<=arr[left]
+        while (arr[j] >= arr[base] && i < j) // 这里的i<j不能漏写
             j--;
-        while (arr[i] <= arr[left] && i < j)
+        while (arr[i] <= arr[base] && i < j)
             i++;
 
+        // 当哨兵i和哨兵j没有相遇时
         // 交换两个数在数组中的位置
-        if (i < j) { // 当哨兵i和哨兵j没有相遇时
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
+        if (i < j)
+            swap(arr, i, j);
     }
 
-    // 最终将基准数归位
-    temp = arr[left];
-    arr[left] = arr[i];
-    arr[i] = temp;
+    // 最终将基准数归位，此时i==j
+    swap(arr, base, i);
 
     quickSort(arr, left, i - 1); // 继续处理左边的，这里是一个递归的过程
     quickSort(arr, i + 1, right); // 继续处理右边的，这里是一个递归的过程
