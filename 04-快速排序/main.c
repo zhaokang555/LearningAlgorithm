@@ -10,7 +10,7 @@ void swap(int arr[], int i, int j) {
 void quickSort(int arr[], int left, int right)
 {
 	// 跳出递归的条件
-	if (left > right) return;
+	if (left >= right) return;
 
 	int i = left;
 	int j = right;
