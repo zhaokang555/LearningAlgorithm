@@ -14,13 +14,13 @@ void quickSort(int arr[], int left, int right)
 
 	int i = left;
 	int j = right;
-	int base = left;
+	int pivot = left;
 	while (i < j) {
 		// 以arr[left]为基准
 		// 顺序很重要，要先从右往左找
-		while (arr[j] >= arr[base] && i < j) j--;
+		while (arr[j] >= arr[pivot] && i < j) j--;
 		// 再从左往右找
-		while (arr[i] <= arr[base] && i < j) i++;
+		while (arr[i] <= arr[pivot] && i < j) i++;
 
 		// 当哨兵i和哨兵j没有相遇时
 		// 交换两个数在数组中的位置
@@ -29,7 +29,7 @@ void quickSort(int arr[], int left, int right)
 	}
 
 	// 最终将基准数归位
-	swap(arr, base, i);
+	swap(arr, pivot, i);
 
 	quickSort(arr, left, i - 1); // 继续处理左边的，这里是一个递归的过程
 	quickSort(arr, i + 1, right); // 继续处理右边的，这里是一个递归的过程
